@@ -1,11 +1,41 @@
-import type { NextRequest } from "next/server";
-import { middleware as supabaseMiddleware } from "@/lib/supabase/middleware";
+// middleware.ts (root)
+import { NextRequest, NextResponse } from "next/server";
 
-export async function middleware(req: NextRequest) {
-  return supabaseMiddleware(req);
+// Jo routes protected chahiye:
+const PROTECTED = [
+  "/dashboard",
+  "/analytics",
+  "/books",
+  "/chapters",
+  "/materials",
+  "/practice",
+  "/quiz",
+  "/subjects",
+  "/topics",
+];
+
+export function middleware(req: NextRequest) {
+  const path = req.nextUrl.pathname;
+  const isProtected = PROTECTED.some((base) =>
+    path === base || path.startsWith(base + "/")
+  );
+  if (!isProtected) return NextResponse.next();
+
+  // Supabase auth cookies — access/refresh
+  const hasAccess = req.cookies.has("sb-access-token");
+  const hasRefresh = req.cookies.has("sb-refresh-token");
+
+  if (!hasAccess && !hasRefresh) {
+    const url = req.nextUrl.clone();
+    url.pathname = "/auth/login";
+    url.searchParams.set("next", path + req.nextUrl.search);
+    return NextResponse.redirect(url);
+  }
+
+  return NextResponse.next();
 }
 
-// run ONLY on protected sections (not on "/")
+// Sirf protected areas par hi middleware run hoga
 export const config = {
   matcher: [
     "/dashboard/:path*",
