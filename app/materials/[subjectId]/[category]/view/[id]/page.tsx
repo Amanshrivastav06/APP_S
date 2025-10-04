@@ -161,9 +161,14 @@ const FALLBACK = [
   {
     id: "For_1", subject_id: "mathematics", category: "Chapters_Formulas",
     title: "Chapter 1 - Number Systems Formulas",
-    file_url: "/materials/mathematics/Chapter_wise_questions/Chapter 1 - Number Systems Formulas.pdf"
+    file_url: "/materials/mathematics/Formulas/Chapter 1 - Number Systems Formulas.pdf"
   },
 
+  {
+    id: "For_2", subject_id: "mathematics", category: "Chapters_Formulas",
+    title: "Polynomials Formulas",
+    file_url: "/materials/mathematics/Formulas/Polynomials Formulas.pdf"
+  },
   {
     id: "science-sp-2025-set1", subject_id: "science", category: "sample-papers",
     title: "CBSE Sample Paper 2025 – Set 1 (Class 9 Science)",

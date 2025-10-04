@@ -286,10 +286,17 @@ const FALLBACK: MaterialRow[] = [
     category: "Chapters_Formulas",
     title: "Chapter 1 - Number Systems Formulas",
     year: "2025",
-    file_url: "/materials/mathematics/Chapter_wise_questions/Chapter 1 - Number Systems Formulas.pdf",
+    file_url: "/materials/mathematics/Formulas/Chapter 1 - Number Systems Formulas.pdf",
   },
 
-
+  {
+    id: "For_2",
+    subject_id: "mathematics",
+    category: "Chapters_Formulas",
+    title: "Polynomials Formulas",
+    year: "2025",
+    file_url: "/materials/mathematics/Formulas/Polynomials Formulas.pdf",
+  },
 
   // {
   //   id: "math",
