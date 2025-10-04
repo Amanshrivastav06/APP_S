@@ -235,6 +235,15 @@ const FALLBACK: MaterialRow[] = [
     file_url: "/materials/mathematics/Chapter_wise_questions/Triangles Questions.pdf",
   },
 
+  {
+    id: "math_Q",
+    subject_id: "mathematics",
+    category: "Chapterwise_questions_with_Solution",
+    title: "Quadrilaterals Questions",
+    year: "2025",
+    file_url: "/materials/mathematics/Chapter_wise_questions/Triangles Questions.pdf",
+  },
+
   // {
   //   id: "math",
   //   subject_id: "mathematics",
