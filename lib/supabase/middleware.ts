@@ -6,53 +6,53 @@ import {
 } from "@supabase/ssr";
 
 export async function middleware(req: NextRequest) {
-  const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-  const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
-
+  // Start with a mutable response
   const res = NextResponse.next({ request: { headers: req.headers } });
 
-  if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
-    console.error("Missing Supabase env. Set on Vercel & .env.local");
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const anon = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  // If envs are missing, don't crash middleware (fail-open)
+  if (!url || !anon) {
+    console.warn("[middleware] Missing Supabase env");
     return res;
   }
 
-  const supabase = createServerClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
-    cookies: {
-      getAll() {
-        return parseCookieHeader(req.headers.get("cookie") ?? "");
+  let supabase;
+  try {
+    supabase = createServerClient(url, anon, {
+      cookies: {
+        getAll() {
+          return parseCookieHeader(req.headers.get("cookie") ?? "");
+        },
+        setAll(cookies) {
+          cookies.forEach(({ name, value, options }) => {
+            res.cookies.set(name, value, options);
+          });
+          res.headers.set("set-cookie", serializeCookieHeader(res.cookies.getAll()));
+        },
       },
-      setAll(cookies) {
-        cookies.forEach(({ name, value, options }) => {
-          res.cookies.set(name, value, options);
-        });
-        res.headers.set("set-cookie", serializeCookieHeader(res.cookies.getAll()));
-      },
-    },
-  });
+    });
+  } catch (e) {
+    console.error("[middleware] createServerClient failed:", e);
+    return res; // fail-open
+  }
 
-  // (Optional) Auth gate
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  // Auth gate — only runs on paths matched by root middleware's config
+  try {
+    const { data: { user } } = await supabase.auth.getUser();
 
-  const path = req.nextUrl.pathname;
-  const isPublic =
-    path === "/" ||
-    path.startsWith("/auth") ||
-    path.startsWith("/api") ||
-    path.startsWith("/_next") ||
-    path === "/favicon.ico" ||
-    path === "/robots.txt";
-
-  if (!user && !isPublic) {
-    const url = req.nextUrl.clone();
-    url.pathname = "/auth/login";
-    return NextResponse.redirect(url);
+    if (!user) {
+      const login = req.nextUrl.clone();
+      login.pathname = "/auth/login";
+      // send them back here after login
+      login.searchParams.set("next", req.nextUrl.pathname + req.nextUrl.search);
+      return NextResponse.redirect(login);
+    }
+  } catch (e) {
+    console.error("[middleware] supabase.auth.getUser() failed:", e);
+    return res; // fail-open
   }
 
   return res;
 }
-
-export const config = {
-  matcher: ["/((?!_next/static|_next/image|favicon.ico|robots.txt).*)"],
-};
