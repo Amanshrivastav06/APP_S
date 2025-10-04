@@ -244,6 +244,39 @@ const FALLBACK: MaterialRow[] = [
     file_url: "/materials/mathematics/Chapter_wise_questions/Triangles Questions.pdf",
   },
 
+  {
+    id: "math_Ci",
+    subject_id: "mathematics",
+    category: "Chapterwise_questions_with_Solution",
+    title: "Circles Questions",
+    year: "2025",
+    file_url: "/materials/mathematics/Chapter_wise_questions/Circles Questions.pdf",
+  },
+  {
+    id: "math_He",
+    subject_id: "mathematics",
+    category: "Chapterwise_questions_with_Solution",
+    title: "Heron’s Formula Important Questions for Class 9 Maths",
+    year: "2025",
+    file_url: "/materials/mathematics/Chapter_wise_questions/Heron’s Formula Important Questions for Class 9 Maths.pdf",
+  },
+
+  {
+    id: "math_Su",
+    subject_id: "mathematics",
+    category: "Chapterwise_questions_with_Solution",
+    title: "Surface Areas and Volumes Questions",
+    year: "2025",
+    file_url: "/materials/mathematics/Chapter_wise_questions/Surface Areas and Volumes Questions.pdf",
+  },
+  {
+    id: "math_St",
+    subject_id: "mathematics",
+    category: "Chapterwise_questions_with_Solution",
+    title: "Statistics Questions",
+    year: "2025",
+    file_url: "/materials/mathematics/Chapter_wise_questions/Statistics Questions.pdf",
+  },
   // {
   //   id: "math",
   //   subject_id: "mathematics",

@@ -132,10 +132,29 @@ const FALLBACK = [
     file_url: "/materials/mathematics/Chapter_wise_questions/Quadrilaterals Questions.pdf"
   },
 
+  {
+    id: "math_Ci", subject_id: "mathematics", category: "Chapterwise_questions_with_Solution",
+    title: "Circles Questions",
+    file_url: "/materials/mathematics/Chapter_wise_questions/Circles Questions.pdf"
+  },
 
+  {
+    id: "math_He", subject_id: "mathematics", category: "Chapterwise_questions_with_Solution",
+    title: "Heron’s Formula Important Questions for Class 9 Maths",
+    file_url: "/materials/mathematics/Chapter_wise_questions/Heron’s Formula Important Questions for Class 9 Maths.pdf"
+  },
 
+  {
+    id: "math_Su", subject_id: "mathematics", category: "Chapterwise_questions_with_Solution",
+    title: "Surface Areas and Volumes Questions",
+    file_url: "/materials/mathematics/Chapter_wise_questions/Surface Areas and Volumes Questions.pdf"
+  },
 
-
+  {
+    id: "math_St", subject_id: "mathematics", category: "Chapterwise_questions_with_Solution",
+    title: "Statistics Questions",
+    file_url: "/materials/mathematics/Chapter_wise_questions/Statistics Questions.pdf"
+  },
 
 
   {
