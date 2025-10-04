@@ -1,7 +1,8 @@
-// middleware.ts (root)
+// middleware.ts (root) — Edge-safe, cookie-based auth
+
 import { NextRequest, NextResponse } from "next/server";
 
-// Jo routes protected chahiye:
+// Protected sections (apni app ke hisaab se badha/sakate ho)
 const PROTECTED = [
   "/dashboard",
   "/analytics",
@@ -16,12 +17,14 @@ const PROTECTED = [
 
 export function middleware(req: NextRequest) {
   const path = req.nextUrl.pathname;
-  const isProtected = PROTECTED.some((base) =>
-    path === base || path.startsWith(base + "/")
+
+  // run only on protected paths
+  const isProtected = PROTECTED.some(
+    (base) => path === base || path.startsWith(base + "/")
   );
   if (!isProtected) return NextResponse.next();
 
-  // Supabase auth cookies — access/refresh
+  // Supabase auth cookies
   const hasAccess = req.cookies.has("sb-access-token");
   const hasRefresh = req.cookies.has("sb-refresh-token");
 
@@ -35,17 +38,6 @@ export function middleware(req: NextRequest) {
   return NextResponse.next();
 }
 
-// Sirf protected areas par hi middleware run hoga
 export const config = {
-  matcher: [
-    "/dashboard/:path*",
-    "/analytics/:path*",
-    "/books/:path*",
-    "/chapters/:path*",
-    "/materials/:path*",
-    "/practice/:path*",
-    "/quiz/:path*",
-    "/subjects/:path*",
-    "/topics/:path*",
-  ],
+  matcher: PROTECTED.map((p) => `${p}/:path*`),
 };
