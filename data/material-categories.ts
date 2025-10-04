@@ -15,7 +15,7 @@ export const SUBJECT_SECTIONS = {
     { key: "syllabus", label: "CBSE Syllabus" },
     { key: "sample-papers", label: "CBSE Sample Papers" },
     { key: "Chapterwise_questions_with_Solution", label: "Chapterwise-Questions" },
-    { key: "case-study", label: "Case Study Questions" },
+    { key: "Chapters_Formulas", label: "All_Chapters_Formulas" },
   ],
   resources: [
     { key: "revision-notes", label: "Revision Notes" },

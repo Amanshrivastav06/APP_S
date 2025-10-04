@@ -156,6 +156,13 @@ const FALLBACK = [
     file_url: "/materials/mathematics/Chapter_wise_questions/Statistics Questions.pdf"
   },
 
+  // Math formula Resorces
+
+  {
+    id: "For_1", subject_id: "mathematics", category: "Chapters_Formulas",
+    title: "Chapter 1 - Number Systems Formulas",
+    file_url: "/materials/mathematics/Chapter_wise_questions/Chapter 1 - Number Systems Formulas.pdf"
+  },
 
   {
     id: "science-sp-2025-set1", subject_id: "science", category: "sample-papers",

@@ -277,6 +277,20 @@ const FALLBACK: MaterialRow[] = [
     year: "2025",
     file_url: "/materials/mathematics/Chapter_wise_questions/Statistics Questions.pdf",
   },
+
+  // Math Formulas resources
+
+  {
+    id: "For_1",
+    subject_id: "mathematics",
+    category: "Chapters_Formulas",
+    title: "Chapter 1 - Number Systems Formulas",
+    year: "2025",
+    file_url: "/materials/mathematics/Chapter_wise_questions/Chapter 1 - Number Systems Formulas.pdf",
+  },
+
+
+
   // {
   //   id: "math",
   //   subject_id: "mathematics",
