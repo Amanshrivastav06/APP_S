@@ -1,8 +1,21 @@
 import type { NextRequest } from "next/server";
-import { middleware as supabaseMiddleware, config as supabaseConfig } from "@/lib/supabase/middleware";
+import { middleware as supabaseMiddleware } from "@/lib/supabase/middleware";
 
-export { supabaseConfig as config };
-
-export async function middleware(request: NextRequest) {
-  return await supabaseMiddleware(request);
+export async function middleware(req: NextRequest) {
+  return supabaseMiddleware(req);
 }
+
+// run ONLY on protected sections (not on "/")
+export const config = {
+  matcher: [
+    "/dashboard/:path*",
+    "/analytics/:path*",
+    "/books/:path*",
+    "/chapters/:path*",
+    "/materials/:path*",
+    "/practice/:path*",
+    "/quiz/:path*",
+    "/subjects/:path*",
+    "/topics/:path*",
+  ],
+};
