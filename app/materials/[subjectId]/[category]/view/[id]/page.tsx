@@ -306,6 +306,76 @@ const FALLBACK = [
     title: "Chapter 12 Statistics",
     file_url: "/materials/mathematics/TextBook Solution/Chapter 12 Statistics.pdf"
   },
+
+
+  // Revision Notes
+  {
+    id: "re_1", subject_id: "mathematics", category: "revision-notes",
+    title: "Chapter 1 Number Systems",
+    file_url: "/materials/mathematics/Revision Notes/Chapter 1 Number Systems.pdf"
+  },
+
+  {
+    id: "re_2", subject_id: "mathematics", category: "revision-notes",
+    title: "Chapter 2 Polynomials",
+    file_url: "/materials/mathematics/Revision Notes/Chapter 2 Polynomials.pdf"
+  },
+
+  {
+    id: "re_3", subject_id: "mathematics", category: "revision-notes",
+    title: "Chapter 3 Coordinate Geometry",
+    file_url: "/materials/mathematics/Revision Notes/Chapter 3 Coordinate Geometry.pdf"
+  },
+
+
+  {
+    id: "re_4", subject_id: "mathematics", category: "revision-notes",
+    title: "Chapter 4 Linear Equations in Two Variables",
+    file_url: "/materials/mathematics/Revision Notes/Chapter 4 Linear Equations in Two Variables.pdf"
+  },
+
+
+  {
+    id: "re_5", subject_id: "mathematics", category: "revision-notes",
+    title: "Chapter 5 Introduction To Euclids Geometry",
+    file_url: "/materials/mathematics/Revision Notes/Chapter 5 Introduction To Euclids Geometry.pdf"
+  },
+  {
+    id: "re_6", subject_id: "mathematics", category: "revision-notes",
+    title: "Chapter 6 Lines and Angles",
+    file_url: "/materials/mathematics/Revision Notes/Chapter 6 Lines and Angles.pdf"
+  },
+  {
+    id: "re_7", subject_id: "mathematics", category: "revision-notes",
+    title: "Chapter 7 Triangles Class 9",
+    file_url: "/materials/mathematics/Revision Notes/Chapter 7 Triangles Class 9.pdf"
+  },
+  {
+    id: "re_8", subject_id: "mathematics", category: "revision-notes",
+    title: "Chapter 8 Quadrilaterals",
+    file_url: "/materials/mathematics/Revision Notes/Chapter 8 Quadrilaterals.pdf"
+  },
+  {
+    id: "re_9", subject_id: "mathematics", category: "revision-notes",
+    title: "Chapter 9 Circles",
+    file_url: "/materials/mathematics/Revision Notes/Chapter 9 Circles.pdf"
+  },
+  {
+    id: "re_10", subject_id: "mathematics", category: "revision-notes",
+    title: "Chapter 10 Herons Formula",
+    file_url: "/materials/mathematics/Revision Notes/Chapter 10 Herons Formula.pdf"
+  },
+  {
+    id: "re_11", subject_id: "mathematics", category: "revision-notes",
+    title: "Chapter 11 Surface Areas and Volumes",
+    file_url: "/materials/mathematics/Revision Notes/Chapter 11 Surface Areas and Volumes.pdf"
+  },
+  {
+    id: "re_12", subject_id: "mathematics", category: "revision-notes",
+    title: "Chapter 12 Statistics",
+    file_url: "/materials/mathematics/Revision Notes/Chapter 12 Statistics.pdf"
+  },
+
   // Science Sample Papers 
   {
     id: "science-sp-2025-set1", subject_id: "science", category: "sample-papers",
