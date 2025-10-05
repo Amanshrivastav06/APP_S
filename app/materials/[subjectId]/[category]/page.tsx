@@ -293,10 +293,116 @@ const FALLBACK: MaterialRow[] = [
     id: "For_2",
     subject_id: "mathematics",
     category: "Chapters_Formulas",
-    title: "Polynomials Formulas",
+    title: "Chapter 2 - Polynomials Formulas",
     year: "2025",
     file_url: "/materials/mathematics/Formulas/Polynomials Formulas.pdf",
   },
+
+  {
+    id: "For_3",
+    subject_id: "mathematics",
+    category: "Chapters_Formulas",
+    title: "Chapter 3 - Coordinate Geometry Formulas",
+    year: "2025",
+    file_url: "/materials/mathematics/Formulas/Chapter 3 - Coordinate Geometry Formulas.pdf",
+  },
+
+  {
+    id: "For_4",
+    subject_id: "mathematics",
+    category: "Chapters_Formulas",
+    title: "Chapter 4 - Linear Equations in Two Variables Formulas",
+    year: "2025",
+    file_url: "/materials/mathematics/Formulas/Chapter 4 - Linear Equations in Two Variables Formulas.pdf",
+  },
+
+  {
+    id: "For_5",
+    subject_id: "mathematics",
+    category: "Chapters_Formulas",
+    title: "Chapter 5 - Introduction to Euclids Geometry Formulas",
+    year: "2025",
+    file_url: "/materials/mathematics/Formulas/Chapter 5 - Introduction to Euclids Geometry Formulas.pdf",
+  },
+
+  {
+    id: "For_6",
+    subject_id: "mathematics",
+    category: "Chapters_Formulas",
+    title: "Chapter 6 - Lines and Angles Formulas",
+    year: "2025",
+    file_url: "/materials/mathematics/Formulas/Chapter 6 - Lines and Angles Formulas.pdf",
+  },
+
+
+  {
+    id: "For_7",
+    subject_id: "mathematics",
+    category: "Chapters_Formulas",
+    title: "Chapter 7 - Triangles Formulas",
+    year: "2025",
+    file_url: "/materials/mathematics/Formulas/Chapter 7 - Triangles Formulas.pdf",
+  },
+
+
+  {
+    id: "For_8",
+    subject_id: "mathematics",
+    category: "Chapters_Formulas",
+    title: "Chapter 8 - Quadrilaterals Formulas",
+    year: "2025",
+    file_url: "/materials/mathematics/Formulas/Chapter 8 - Quadrilaterals Formulas.pdf",
+  },
+
+  {
+    id: "For_9",
+    subject_id: "mathematics",
+    category: "Chapters_Formulas",
+    title: "Chapter 9 - Areas of Parallelograms and Triangles Formulas",
+    year: "2025",
+    file_url: "/materials/mathematics/Formulas/Chapter 9 - Areas of Parallelograms and Triangles Formulas.pdf",
+  },
+  {
+    id: "For_10",
+    subject_id: "mathematics",
+    category: "Chapters_Formulas",
+    title: "Chapter 10 - Circles Formulas",
+    year: "2025",
+    file_url: "/materials/mathematics/Formulas/Chapter 10 - Circles Formulas.pdf",
+  },
+  {
+    id: "For_12",
+    subject_id: "mathematics",
+    category: "Chapters_Formulas",
+    title: "Chapter 12 - Heron's Formula Formulas",
+    year: "2025",
+    file_url: "/materials/mathematics/Formulas/Chapter 12 - Heron's Formula Formulas.pdf",
+  },
+  {
+    id: "For_13",
+    subject_id: "mathematics",
+    category: "Chapters_Formulas",
+    title: "Chapter 13 - Surface Areas and Volumes Formulas",
+    year: "2025",
+    file_url: "/materials/mathematics/Formulas/Chapter 13 - Surface Areas and Volumes Formulas.pdf",
+  },
+  {
+    id: "For_14",
+    subject_id: "mathematics",
+    category: "Chapters_Formulas",
+    title: "Chapter 14 - Statistics Formulas",
+    year: "2025",
+    file_url: "/materials/mathematics/Formulas/Chapter 14 - Statistics Formulas.pdf",
+  },
+  {
+    id: "For_15",
+    subject_id: "mathematics",
+    category: "Chapters_Formulas",
+    title: "Chapter 15 - Probability Formulas",
+    year: "2025",
+    file_url: "/materials/mathematics/Formulas/Chapter 15 - Probability Formulas.pdf",
+  },
+
 
   // {
   //   id: "math",
