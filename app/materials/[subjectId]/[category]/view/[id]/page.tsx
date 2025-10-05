@@ -381,7 +381,7 @@ const FALLBACK = [
   {
     id: "science-cq-2025-ch01",
     subject_id: "science",
-    category: "chapterwise_questions_with_solution",
+    category: "Chapterwise_questions_with_Solution",
     title: "Chapter 1 — Matter in Our Surroundings",
     year: "2025",
     file_url: "/materials/science/Chapter_wise_questions/Chapter-1.pdf",
@@ -389,7 +389,7 @@ const FALLBACK = [
   {
     id: "science-cq-2025-ch02",
     subject_id: "science",
-    category: "chapterwise_questions_with_solution",
+    category: "Chapterwise_questions_with_Solution",
     title: "Chapter 2 — Is Matter Around Us Pure?",
     year: "2025",
     file_url: "/materials/science/Chapter_wise_questions/Chapter-2.pdf",
@@ -397,7 +397,7 @@ const FALLBACK = [
   {
     id: "science-cq-2025-ch03",
     subject_id: "science",
-    category: "chapterwise_questions_with_solution",
+    category: "Chapterwise_questions_with_Solution",
     title: "Chapter 3 — Atoms and Molecules",
     year: "2025",
     file_url: "/materials/science/Chapter_wise_questions/Chapter-3.pdf",
@@ -405,7 +405,7 @@ const FALLBACK = [
   {
     id: "science-cq-2025-ch04",
     subject_id: "science",
-    category: "chapterwise_questions_with_solution",
+    category: "Chapterwise_questions_with_solution",
     title: "Chapter 4 — Structure of the Atom",
     year: "2025",
     file_url: "/materials/science/Chapter_wise_questions/Chapter-4.pdf",
@@ -413,7 +413,7 @@ const FALLBACK = [
   {
     id: "science-cq-2025-ch05",
     subject_id: "science",
-    category: "chapterwise_questions_with_solution",
+    category: "Chapterwise_questions_with_solution",
     title: "Chapter 5 — The Fundamental Unit of Life",
     year: "2025",
     file_url: "/materials/science/Chapter_wise_questions/Chapter-5.pdf",
@@ -421,7 +421,7 @@ const FALLBACK = [
   {
     id: "science-cq-2025-ch06",
     subject_id: "science",
-    category: "chapterwise_questions_with_solution",
+    category: "Chapterwise_questions_with_solution",
     title: "Chapter 6 — Tissues",
     year: "2025",
     file_url: "/materials/science/Chapter_wise_questions/Chapter-6.pdf",
@@ -429,7 +429,7 @@ const FALLBACK = [
   {
     id: "science-cq-2025-ch07",
     subject_id: "science",
-    category: "chapterwise_questions_with_solution",
+    category: "Chapterwise_questions_with_solution",
     title: "Chapter 7 — Diversity in Living Organisms",
     year: "2025",
     file_url: "/materials/science/Chapter_wise_questions/Chapter-7.pdf",
@@ -437,7 +437,7 @@ const FALLBACK = [
   {
     id: "science-cq-2025-ch08",
     subject_id: "science",
-    category: "chapterwise_questions_with_solution",
+    category: "Chapterwise_questions_with_solution",
     title: "Chapter 8 — Motion",
     year: "2025",
     file_url: "/materials/science/Chapter_wise_questions/Chapter-8.pdf",
@@ -445,7 +445,7 @@ const FALLBACK = [
   {
     id: "science-cq-2025-ch09",
     subject_id: "science",
-    category: "chapterwise_questions_with_solution",
+    category: "Chapterwise_questions_with_solution",
     title: "Chapter 9 — Force and Laws of Motion",
     year: "2025",
     file_url: "/materials/science/Chapter_wise_questions/Chapter-9.pdf",
@@ -453,7 +453,7 @@ const FALLBACK = [
   {
     id: "science-cq-2025-ch10",
     subject_id: "science",
-    category: "chapterwise_questions_with_solution",
+    category: "Chapterwise_questions_with_solution",
     title: "Chapter 10 — Gravitation",
     year: "2025",
     file_url: "/materials/science/Chapter_wise_questions/Chapter-10.pdf",
@@ -461,7 +461,7 @@ const FALLBACK = [
   {
     id: "science-cq-2025-ch11",
     subject_id: "science",
-    category: "chapterwise_questions_with_solution",
+    category: "Chapterwise_questions_with_solution",
     title: "Chapter 11 — Work and Energy",
     year: "2025",
     file_url: "/materials/science/Chapter_wise_questions/Chapter-11.pdf",
@@ -469,7 +469,7 @@ const FALLBACK = [
   {
     id: "science-cq-2025-ch12",
     subject_id: "science",
-    category: "chapterwise_questions_with_solution",
+    category: "Chapterwise_questions_with_solution",
     title: "Chapter 12 — Sound",
     file_url: "/materials/science/Chapter_wise_questions/Chapter-12.pdf",
   },
