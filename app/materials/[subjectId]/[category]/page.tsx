@@ -723,6 +723,14 @@ const FALLBACK: MaterialRow[] = [
   },
   // ------------------ /Science Chapterwise Questions ---------------------
 
+  {
+    id: "s1",
+    subject_id: "science",
+    category: "Chapterwise_questions_with_Solution",
+    title: "Ch-1",
+    year: "2025",
+    file_url: "/materials/science/Chapter_wise_questions/Chapter-1.pdf",
+  },
 
   // Science Sample Papers
   {
