@@ -238,6 +238,13 @@ const FALLBACK = [
     file_url: "/materials/mathematics/Formulas/Chapter 15 - Probability Formulas.pdf"
   },
 
+  // Text Solution
+  {
+    id: "text_1", subject_id: "mathematics", category: "solutions",
+    title: "Chapter 1 Number Systems",
+    file_url: "/materials/mathematics/TextBook Solution/Chapter 1 Number Systems.pdf"
+  },
+
   // Science Sample Papers 
   {
     id: "science-sp-2025-set1", subject_id: "science", category: "sample-papers",

@@ -403,6 +403,17 @@ const FALLBACK: MaterialRow[] = [
     file_url: "/materials/mathematics/Formulas/Chapter 15 - Probability Formulas.pdf",
   },
 
+  // Text Book Solution
+  {
+    id: "text_1",
+    subject_id: "mathematics",
+    category: "solutions",
+    title: "Chapter 1 Number Systems",
+    year: "2025",
+    file_url: "/materials/mathematics/TextBook Solution/Chapter 1 Number Systems.pdf",
+  },
+
+
 
   // {
   //   id: "math",
