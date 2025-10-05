@@ -245,6 +245,67 @@ const FALLBACK = [
     file_url: "/materials/mathematics/TextBook Solution/Chapter 1 Number Systems.pdf"
   },
 
+  {
+    id: "text_2", subject_id: "mathematics", category: "solutions",
+    title: "Chapter 2 Polynomials",
+    file_url: "/materials/mathematics/TextBook Solution/Chapter 2 Polynomials.pdf"
+  },
+
+  {
+    id: "text_3", subject_id: "mathematics", category: "solutions",
+    title: "Chapter 3 Coordinate Geometry",
+    file_url: "/materials/mathematics/TextBook Solution/Chapter 3 Coordinate Geometry.pdf"
+  },
+
+  {
+    id: "text_4", subject_id: "mathematics", category: "solutions",
+    title: "Chapter 4 Linear Equations in Two Variables",
+    file_url: "/materials/mathematics/TextBook Solution/Chapter 4 Linear Equations in Two Variables.pdf"
+  },
+
+  {
+    id: "text_5", subject_id: "mathematics", category: "solutions",
+    title: "Chapter 5 Introduction to Euclids Geometry",
+    file_url: "/materials/mathematics/TextBook Solution/Chapter 5 Introduction to Euclids Geometry.pdf"
+  },
+
+  {
+    id: "text_6", subject_id: "mathematics", category: "solutions",
+    title: "Chapter 6 Lines and Angles",
+    file_url: "/materials/mathematics/TextBook Solution/Chapter 6 Lines and Angles.pdf"
+  },
+
+  {
+    id: "text_7", subject_id: "mathematics", category: "solutions",
+    title: "Chapter 7 Triangles",
+    file_url: "/materials/mathematics/TextBook Solution/Chapter 7 Triangles.pdf"
+  },
+
+  {
+    id: "text_8", subject_id: "mathematics", category: "solutions",
+    title: "Chapter 8 Quadrilaterals",
+    file_url: "/materials/mathematics/TextBook Solution/Chapter 8 Quadrilaterals.pdf"
+  },
+  {
+    id: "text_9", subject_id: "mathematics", category: "solutions",
+    title: "Chapter 9 Circles",
+    file_url: "/materials/mathematics/TextBook Solution/Chapter 9 Circles.pdf"
+  },
+  {
+    id: "text_10", subject_id: "mathematics", category: "solutions",
+    title: "Chapter 10 Heron's Formula",
+    file_url: "/materials/mathematics/TextBook Solution/Chapter 10.pdf"
+  },
+  {
+    id: "text_11", subject_id: "mathematics", category: "solutions",
+    title: "Chapter 11 Surface Area and Volume",
+    file_url: "/materials/mathematics/TextBook Solution/Chapter 11 Surface Area and Volume.pdf"
+  },
+  {
+    id: "text_12", subject_id: "mathematics", category: "solutions",
+    title: "Chapter 12 Statistics",
+    file_url: "/materials/mathematics/TextBook Solution/Chapter 12 Statistics.pdf"
+  },
   // Science Sample Papers 
   {
     id: "science-sp-2025-set1", subject_id: "science", category: "sample-papers",
