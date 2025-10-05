@@ -471,7 +471,6 @@ const FALLBACK = [
     subject_id: "science",
     category: "chapterwise_questions_with_solution",
     title: "Chapter 12 — Sound",
-    year: "2025",
     file_url: "/materials/science/Chapter_wise_questions/Chapter-12.pdf",
   },
   // ------------------ /Science Chapterwise Questions ---------------------
