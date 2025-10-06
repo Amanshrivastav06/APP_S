@@ -475,11 +475,196 @@ const FALLBACK = [
   },
   // ------------------ /Science Chapterwise Questions ---------------------
 
+  // {
+  //   id: "s1", subject_id: "science", category: "Chapterwise_questions_with_Solution",
+  //   title: "Ch-1",
+  //   file_url: "/materials/science/Chapter_wise_questions/Chapter-1.pdf"
+  // },
+
+  // Science Syllabus
   {
-    id: "s1", subject_id: "science", category: "Chapterwise_questions_with_Solution",
-    title: "Ch-1",
-    file_url: "/materials/science/Chapter_wise_questions/Chapter-1.pdf"
+    id: "sc-sl",
+    subject_id: "science",
+    category: "syllabus",
+    title: "CBSE-Syllabus",
+    year: "2025",
+    file_url: "/materials/science/syllabus/Science_syllabus.pdf",
   },
+
+
+  //Science Text book Solution
+  // Science • Textbook Solutions
+  {
+    id: "Sch-1",
+    subject_id: "science",
+    category: "solutions",
+    title: "Chapter 1 Matters In Our Surroundings",
+    file_url: "/materials/science/TextBook Solution/Chapter 1 Matters In Our Surroundings.pdf",
+  },
+  {
+    id: "Sch-2",
+    subject_id: "science",
+    category: "solutions",
+    title: "Chapter 2 Is Matter Around Us Pure",
+    file_url: "/materials/science/TextBook Solution/Chapter 2 Is Matter Around Us Pure.pdf",
+  },
+  {
+    id: "Sch-3",
+    subject_id: "science",
+    category: "solutions",
+    title: "Chapter 3 Atoms And Molecules",
+    file_url: "/materials/science/TextBook Solution/Chapter 3 Atoms And Molecules.pdf",
+  },
+  {
+    id: "Sch-4",
+    subject_id: "science",
+    category: "solutions",
+    title: "Chapter 4 Structure Of The Atom",
+    file_url: "/materials/science/TextBook Solution/Chapter 4 Structure Of The Atom.pdf",
+  },
+  {
+    id: "Sch-5",
+    subject_id: "science",
+    category: "solutions",
+    title: "Chapter 5 The Fundamental Unit Of Life",
+    file_url: "/materials/science/TextBook Solution/Chapter 5 The Fundamental Unit Of Life.pdf",
+  },
+  {
+    id: "Sch-6",
+    subject_id: "science",
+    category: "solutions",
+    title: "Chapter 6 Tissues",
+    file_url: "/materials/science/TextBook Solution/Chapter 6 Tissues.pdf",
+  },
+  {
+    id: "Sch-7",
+    subject_id: "science",
+    category: "solutions",
+    title: "Chapter 7 Motion",
+    file_url: "/materials/science/TextBook Solution/Chapter 7 Motion.pdf",
+  },
+  {
+    id: "Sch-8",
+    subject_id: "science",
+    category: "solutions",
+    title: "Chapter 8 Force and Laws of Motion",
+    file_url: "/materials/science/TextBook Solution/Chapter 8 Force and Laws of Motion.pdf",
+  },
+  {
+    id: "Sch-9",
+    subject_id: "science",
+    category: "solutions",
+    title: "Chapter 9 Gravitation",
+    file_url: "/materials/science/TextBook Solution/Chapter 9 Gravitation.pdf",
+  },
+  {
+    id: "Sch-10",
+    subject_id: "science",
+    category: "solutions",
+    title: "Chapter 10 Work And Energy",
+    file_url: "/materials/science/TextBook Solution/Chapter 10 Work And Energy.pdf",
+  },
+  {
+    id: "Sch-11",
+    subject_id: "science",
+    category: "solutions",
+    title: "Chapter 11 Sound",
+    file_url: "/materials/science/TextBook Solution/Chapter 11 Sound.pdf",
+  },
+  {
+    id: "Sch-12",
+    subject_id: "science",
+    category: "solutions",
+    title: "Chapter 12 Improvement In Food Resources",
+    file_url: "/materials/science/TextBook Solution/Chapter 12 Improvement In Food Resources.pdf",
+  },
+
+  //Science Notes
+  {
+    id: "REV-1",
+    subject_id: "science",
+    category: "revision-notes",
+    title: "Chapter 1 Matter in Our Surroundings",
+    file_url: "/materials/science/Revision Notes/Chapter 1 Matter in Our Surroundings.pdf",
+  },
+  {
+    id: "REV-2",
+    subject_id: "science",
+    category: "revision-notes",
+    title: "Chapter 2 Is Matter Around Us Pure",
+    file_url: "/materials/science/Revision Notes/Chapter 2 Is Matter Around Us Pure.pdf",
+  },
+  {
+    id: "REV-3",
+    subject_id: "science",
+    category: "revision-notes",
+    title: "Chapter 3 Atoms and Molecules",
+    file_url: "/materials/science/Revision Notes/Chapter 3 Atoms and Molecules.pdf",
+  },
+  {
+    id: "REV-4",
+    subject_id: "science",
+    category: "revision-notes",
+    title: "Chapter 4 Structure of the Atom",
+    file_url: "/materials/science/Revision Notes/Chapter 4 Structure of the Atom.pdf",
+  },
+  {
+    id: "REV-5",
+    subject_id: "science",
+    category: "revision-notes",
+    title: "Chapter 5 The Fundamental Unit Of Life",
+    file_url: "/materials/science/Revision Notes/Chapter 5 The Fundamental Unit Of Life.pdf",
+  },
+  {
+    id: "REV-6",
+    subject_id: "science",
+    category: "revision-notes",
+    title: "Chapter 6 Tissues",
+    file_url: "/materials/science/Revision Notes/Chapter 6 Tissues.pdf",
+  },
+  {
+    id: "REV-7",
+    subject_id: "science",
+    category: "revision-notes",
+    title: "Chapter 7 Motion",
+    file_url: "/materials/science/Revision Notes/Chapter 7 Motion.pdf",
+  },
+  {
+    id: "REV-8",
+    subject_id: "science",
+    category: "revision-notes",
+    title: "Chapter 8 Force and Laws of Motion",
+    file_url: "/materials/science/Revision Notes/Chapter 8 Force and Laws of Motion.pdf",
+  },
+  {
+    id: "REV-9",
+    subject_id: "science",
+    category: "revision-notes",
+    title: "Chapter 9 Gravitation",
+    file_url: "/materials/science/Revision Notes/Chapter 9 Gravitation.pdf",
+  },
+  {
+    id: "REV-10",
+    subject_id: "science",
+    category: "revision-notes",
+    title: "Chapter 10 Work And Energy",
+    file_url: "/materials/science/Revision Notes/Chapter 10 Work And Energy.pdf",
+  },
+  {
+    id: "REV-11",
+    subject_id: "science",
+    category: "revision-notes",
+    title: "Chapter 11 Sound",
+    file_url: "/materials/science/Revision Notes/Chapter 11 Sound.pdf",
+  },
+  {
+    id: "REV-12",
+    subject_id: "science",
+    category: "revision-notes",
+    title: "Chapter 12 Improvement in Food Resources",
+    file_url: "/materials/science/Revision Notes/Chapter 12 Improvement in Food Resources.pdf",
+  },
+
 
 
   // Science Sample Papers 
