@@ -644,11 +644,11 @@ const FALLBACK = [
     file_url: "/materials/science/Revision Notes/Chapter 9 Gravitation.pdf",
   },
   {
-    id: "REV-10",
+    id: "RE-10",
     subject_id: "science",
     category: "revision-notes",
     title: "Chapter 10 Work And Energy",
-    file_url: "/materials/science/Revision Notes/Chapter 10 Work And Energy.pdf",
+    file_url: "/materials/science/Revision Notes/Chapter 10 Work and Energy.pdf",
   },
   {
     id: "REV-11",

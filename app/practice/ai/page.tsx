@@ -2,7 +2,12 @@
 
 import React, { useMemo, useState } from "react";
 import { CLASS9_CHAPTERS, SubjectKey } from "@/data/class9_chapters";
-import { useRouter } from "next/navigation";
+import {
+  exportQuestionsAsPDF,
+  exportQuestionsAsDOCX,
+  exportQuestionsAsCSV,
+  exportQuestionsAsJSON,
+} from "@/lib/export-questions";
 
 type Category = "MCQ" | "Assertion-Reason" | "True/False" | "Short Answer";
 type Level = "Easy" | "Medium" | "Hard";
@@ -19,6 +24,15 @@ type McqQ = { question: string; category: "MCQ"; options: string[]; answerIndex:
 type NonMcqQ = { question: string; category: Exclude<Category, "MCQ">; answer: string; solution: string };
 type AnyQ = McqQ | NonMcqQ;
 
+type ExportableQ = {
+  question: string;
+  options?: string[];
+  answer?: string;
+  solution?: string;
+  category?: string;
+  level?: string;
+};
+
 export default function PracticeWithAIPage() {
   const subjects = Object.keys(CLASS9_CHAPTERS) as SubjectKey[];
   const [subject, setSubject] = useState<SubjectKey>(subjects[0]);
@@ -30,9 +44,54 @@ export default function PracticeWithAIPage() {
   const [questions, setQuestions] = useState<AnyQ[]>([]);
   const [idx, setIdx] = useState(0);
   const [score, setScore] = useState(0);
-  const [answers, setAnswers] = useState<Record<number, number | string>>({}); // index -> choice or text
+  const [answers, setAnswers] = useState<Record<number, number | string>>({});
 
   const chapters = useMemo(() => CLASS9_CHAPTERS[subject], [subject]);
+
+  const exportable: ExportableQ[] = useMemo(() => {
+    return questions.map((q) => {
+      if ((q as any).category === "MCQ") {
+        const m = q as McqQ;
+        const ansText = m.options?.[m.answerIndex] ?? "";
+        const ansLetter = typeof m.answerIndex === "number" ? String.fromCharCode(65 + m.answerIndex) : "";
+        return {
+          question: m.question,
+          options: m.options,
+          answer: `${ansLetter}${ansLetter ? ". " : ""}${ansText}`,
+          solution: m.solution,
+          category: m.category,
+          level,
+        };
+      }
+      const n = q as NonMcqQ;
+      return {
+        question: n.question,
+        answer: n.answer,
+        solution: n.solution,
+        category: n.category,
+        level,
+      };
+    });
+  }, [questions, level]);
+
+  const fileBase = useMemo(() => {
+    const clean = (s: string) => s.replace(/[^a-z0-9-_]/gi, "_").slice(0, 80);
+    return `Class9_${clean(subject)}_${clean(chapter)}`;
+  }, [subject, chapter]);
+
+  const handleDownload = (fmt: "pdf" | "docx" | "csv" | "json") => {
+    if (!questions.length) return alert("No questions to download yet.");
+    switch (fmt) {
+      case "pdf":
+        return exportQuestionsAsPDF(exportable as any, `${fileBase}.pdf`, { includeSolutions: false });
+      case "docx":
+        return exportQuestionsAsDOCX(exportable as any, `${fileBase}.docx`);
+      case "csv":
+        return exportQuestionsAsCSV(exportable as any, `${fileBase}.csv`);
+      case "json":
+        return exportQuestionsAsJSON(exportable as any, `${fileBase}.json`);
+    }
+  };
 
   const start = async () => {
     const payload: GenReq = { subject, chapter, category, level, quantity };
@@ -58,14 +117,12 @@ export default function PracticeWithAIPage() {
     const newAns = { ...answers, [idx]: ans };
     setAnswers(newAns);
 
-    // update score if MCQ and correct
     if ((q as any).category === "MCQ") {
       const mcq = q as McqQ;
       if (typeof ans === "number" && ans === mcq.answerIndex) {
         setScore((s) => s + 1);
       }
     } else {
-      // Non-MCQ scoring: simple exact match (case-insensitive trimmed) for True/False, else 0 (review in results)
       const non = q as NonMcqQ;
       const norm = (x: any) => String(x ?? "").trim().toLowerCase();
       if (["true/false"].includes(non.category.toLowerCase())) {
@@ -80,7 +137,20 @@ export default function PracticeWithAIPage() {
     }
   };
 
-  // UI blocks
+  const DownloadBar = () => (
+    <div className="flex flex-wrap gap-2 mb-4">
+      <button
+        onClick={() => exportQuestionsAsPDF(exportable as any, `${fileBase}.pdf`, { includeSolutions: false })}
+        className="px-3 py-2 rounded-xl border"
+      >
+        Download PDF
+      </button>
+      <button onClick={() => handleDownload("docx")} className="px-3 py-2 rounded-xl border">DOCX</button>
+      <button onClick={() => handleDownload("csv")} className="px-3 py-2 rounded-xl border">CSV</button>
+      <button onClick={() => handleDownload("json")} className="px-3 py-2 rounded-xl border">JSON</button>
+    </div>
+  );
+
   if (phase === "form") {
     return (
       <div className="max-w-3xl mx-auto p-6 space-y-6">
@@ -98,9 +168,7 @@ export default function PracticeWithAIPage() {
               }}
             >
               {subjects.map((s) => (
-                <option key={s} value={s}>
-                  {s}
-                </option>
+                <option key={s} value={s}>{s}</option>
               ))}
             </select>
           </div>
@@ -112,16 +180,14 @@ export default function PracticeWithAIPage() {
               onChange={(e) => setChapter(e.target.value)}
             >
               {chapters.map((c) => (
-                <option key={c} value={c}>
-                  {c}
-                </option>
+                <option key={c} value={c}>{c}</option>
               ))}
             </select>
             <p className="text-xs text-gray-500 mt-1">Class 9 NCERT chapters only.</p>
           </div>
           <div>
             <label className="block text-sm mb-1">Question Category</label>
-            <select className="w-full border rounded-lg p-2" value={category} onChange={(e)=>setCategory(e.target.value as Category)}>
+            <select className="w-full border rounded-lg p-2" value={category} onChange={(e) => setCategory(e.target.value as Category)}>
               <option>MCQ</option>
               <option>Assertion-Reason</option>
               <option>True/False</option>
@@ -130,7 +196,7 @@ export default function PracticeWithAIPage() {
           </div>
           <div>
             <label className="block text-sm mb-1">Level</label>
-            <select className="w-full border rounded-lg p-2" value={level} onChange={(e)=>setLevel(e.target.value as Level)}>
+            <select className="w-full border rounded-lg p-2" value={level} onChange={(e) => setLevel(e.target.value as Level)}>
               <option>Easy</option>
               <option>Medium</option>
               <option>Hard</option>
@@ -138,7 +204,7 @@ export default function PracticeWithAIPage() {
           </div>
           <div>
             <label className="block text-sm mb-1">Quantity</label>
-            <input type="number" min={1} max={25} className="w-full border rounded-lg p-2" value={quantity} onChange={(e)=>setQuantity(parseInt(e.target.value || "1"))}/>
+            <input type="number" min={1} max={25} className="w-full border rounded-lg p-2" value={quantity} onChange={(e) => setQuantity(parseInt(e.target.value || "1"))} />
           </div>
         </div>
         <div className="flex gap-3">
@@ -161,12 +227,15 @@ export default function PracticeWithAIPage() {
           <h1 className="text-xl font-semibold">Question {idx + 1} / {questions.length}</h1>
           <span className="text-sm">Score: {score}</span>
         </div>
+
+        <DownloadBar />
+
         <div className="p-4 rounded-2xl border bg-white shadow-sm">
           <p className="mb-4">{q.question}</p>
           {(q as any).category === "MCQ" ? (
             <div className="space-y-2">
-              {(q as any).options.map((opt: string, i: number)=>(
-                <button key={i} onClick={()=>submitAnswer(i)} className="w-full text-left border rounded-lg p-2 hover:bg-gray-50">{String.fromCharCode(65+i)}. {opt}</button>
+              {(q as any).options.map((opt: string, i: number) => (
+                <button key={i} onClick={() => submitAnswer(i)} className="w-full text-left border rounded-lg p-2 hover:bg-gray-50">{String.fromCharCode(65 + i)}. {opt}</button>
               ))}
             </div>
           ) : (
@@ -174,14 +243,14 @@ export default function PracticeWithAIPage() {
               <input
                 className="w-full border rounded-lg p-2"
                 placeholder="Type your answer (e.g., True/False or short response)"
-                onKeyDown={(e)=>{
-                  if(e.key==='Enter'){
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
                     submitAnswer((e.target as HTMLInputElement).value);
-                    (e.target as HTMLInputElement).value='';
+                    (e.target as HTMLInputElement).value = '';
                   }
                 }}
               />
-              <button onClick={()=>{
+              <button onClick={() => {
                 const inp = (document.activeElement as HTMLInputElement);
                 submitAnswer(inp?.value ?? "");
               }} className="px-4 py-2 rounded-xl bg-black text-white">Submit</button>
@@ -192,28 +261,25 @@ export default function PracticeWithAIPage() {
     );
   }
 
-  // results
   return (
     <div className="max-w-3xl mx-auto p-6 space-y-6">
       <h1 className="text-2xl font-semibold">Results</h1>
       <p className="text-sm">Score: {score} / {questions.length}</p>
+      <DownloadBar />
       <div className="space-y-4">
-        {questions.map((q, i)=>{
+        {questions.map((q, i) => {
           const userAns = answers[i];
           const isMcq = (q as any).category === "MCQ";
-          const correct = isMcq ? (userAns === (q as any).answerIndex) : undefined;
           return (
             <div key={i} className="p-4 border rounded-2xl">
-              <p className="font-medium">Q{i+1}. {q.question}</p>
+              <p className="font-medium">Q{i + 1}. {q.question}</p>
               {isMcq ? (
                 <div className="mt-2 text-sm">
-                  {(q as any).options.map((o:string, idx:number)=>(
-                    <div key={idx}>
-                      {String.fromCharCode(65+idx)}. {o}
-                    </div>
+                  {(q as any).options.map((o: string, idx: number) => (
+                    <div key={idx}>{String.fromCharCode(65 + idx)}. {o}</div>
                   ))}
-                  <div className="mt-2">Your answer: {typeof userAns === "number" ? String.fromCharCode(65+(userAns as number)) : "—"}</div>
-                  <div>Correct answer: {String.fromCharCode(65+((q as any).answerIndex))}</div>
+                  <div className="mt-2">Your answer: {typeof userAns === "number" ? String.fromCharCode(65 + (userAns as number)) : "—"}</div>
+                  <div>Correct answer: {String.fromCharCode(65 + ((q as any).answerIndex))}</div>
                 </div>
               ) : (
                 <div className="mt-2 text-sm">
