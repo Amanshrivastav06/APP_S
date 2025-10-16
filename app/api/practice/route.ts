@@ -1,20 +1,35 @@
 import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+import { buildQuiz } from "@/lib/ai/practice/generators";
 
 const OPENAI_URL = "https://api.openai.com/v1/chat/completions";
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest | Request) {
   try {
     const body = await req.json();
     const { subject, chapter, category, level, quantity } = body || {};
 
-    if (!process.env.OPENAI_API_KEY) {
+    if (!process.envOPENAI_API_KEY) {
       return NextResponse.json({ error: "Missing OPENAI_API_KEY" }, { status: 500 });
     }
-
     if (!subject || !chapter || !category || !level || !quantity) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
+    // ───────── Orchestrator (default) ─────────
+    // Set USE_ORCHESTRATOR=false to use legacy flow below.
+    if (process.env.USE_ORCHESTRATOR !== "false") {
+      const questions = await buildQuiz({
+        subject,
+        chapter,
+        category,
+        level,
+        quantity,
+      });
+      return NextResponse.json({ questions });
+    }
+
+    // ───────── Legacy single-call flow (PRESERVED) ─────────
     // System rules enforcing Class 9 only generation
     const system = `You are an AI question generator and quiz assistant for NCERT Class 9 only.
 - Strictly generate questions from Class 9 NCERT syllabus and official sample papers.
@@ -51,7 +66,7 @@ If the requested chapter is not part of Class 9 for the given subject, respond w
     const r = await fetch(OPENAI_URL, {
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
+        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -61,26 +76,39 @@ If the requested chapter is not part of Class 9 for the given subject, respond w
           { role: "system", content: system },
           { role: "user", content: user },
         ],
-        response_format: { type: "json_object" }
+        response_format: { type: "json_object" },
       }),
     });
 
     const data = await r.json();
     if (!r.ok) {
-      return NextResponse.json({ error: data?.error?.message || "OpenAI error" }, { status: 500 });
+      return NextResponse.json(
+        { error: data?.error?.message || "OpenAI error" },
+        { status: 500 }
+      );
     }
 
+    // ───────── DO NOT REMOVE (kept exactly as requested) ─────────
     // Extract and validate JSON
     const content = data?.choices?.[0]?.message?.content || "{}";
     let parsed: any = {};
-    try { parsed = JSON.parse(content); } catch { parsed = {}; }
+    try {
+      parsed = JSON.parse(content);
+    } catch {
+      parsed = {};
+    }
     if (parsed?.error) {
       return NextResponse.json({ error: parsed.error }, { status: 400 });
     }
-    const questions = Array.isArray(parsed?.questions) ? parsed.questions.slice(0, quantity) : [];
+    const questions = Array.isArray(parsed?.questions)
+      ? parsed.questions.slice(0, quantity)
+      : [];
 
     return NextResponse.json({ questions });
   } catch (e: any) {
-    return NextResponse.json({ error: e?.message || "Unknown error" }, { status: 500 });
+    return NextResponse.json(
+      { error: e?.message || "Unknown error" },
+      { status: 500 }
+    );
   }
 }
