@@ -9,7 +9,7 @@ export async function POST(req: NextRequest | Request) {
     const body = await req.json();
     const { subject, chapter, category, level, quantity } = body || {};
 
-    if (!process.envOPENAI_API_KEY) {
+    if (!process.env.OPENAI_API_KEY) {
       return NextResponse.json({ error: "Missing OPENAI_API_KEY" }, { status: 500 });
     }
     if (!subject || !chapter || !category || !level || !quantity) {
