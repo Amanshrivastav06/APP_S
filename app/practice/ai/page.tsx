@@ -95,12 +95,17 @@ export default function PracticeWithAIPage() {
 
   const start = async () => {
     const payload: GenReq = { subject, chapter, category, level, quantity };
+<<<<<<< HEAD
     const r = await fetch("/api/practice-ai", {
 
+=======
+    const r = await fetch("/api/practice", {
+>>>>>>> b5aa996d8586dccce958402bb9436e95456420b9
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
     });
+<<<<<<< HEAD
     let data;
     try {
       data = await r.json();
@@ -109,6 +114,9 @@ export default function PracticeWithAIPage() {
       return;
     }
 
+=======
+    const data = await r.json();
+>>>>>>> b5aa996d8586dccce958402bb9436e95456420b9
     if (!r.ok) {
       alert(data?.error || "Failed to generate questions");
       return;
